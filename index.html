@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header><h1>Expense Tracker</h1></header>
+    <div class="form-group">
+      <input type="text" id="expense-name" placeholder="Expense Name" />
+      <input type="number" id="expense-amount" placeholder="Amount" />
+      <select id="expense-category">
+        <option value="" disabled selected>Select Category</option>
+        <option value="food">Food</option>
+        <option value="shopping">Shopping</option>
+        <option value="travelling">Travelling</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="other">other</option>
+      </select>
+      <input type="date" id="expense-date" placeholder="Date (optional)" />
+      <button id="add-expense" disabled>Add Expense</button>
+    </div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Expense Name</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="expense-table"></tbody>
+      </table>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-left">
+        <div class="filter-item">
+          <label for="category-filter">filter by category:</label>
+          <select id="category-filter">
+            <option value="all" selected>All</option>
+            <option value="food">Food</option>
+            <option value="shopping">Shopping</option>
+            <option value="travelling">Travelling</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="other">other</option>
+          </select>
+        </div>
+        <div class="filter-item">
+          <label>Date:</label>
+          <input type="date" id="date-filter" />
+          <button id="clear-date" class="clear-date-btn">Clear</button>
+        </div>
+        <div class="search-box">
+          <span>🔍</span>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search name or category..."
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <div class="total">Total: $<span id="total-expense">0.00</span></div>
+    </div>
+
+    <div id="edit-modal" class="modal">
+      <div class="modal-content">
+        <h2>Edit expense</h2>
+        <input type="text" id="edit-expense-name" placeholder="Expense Name" />
+        <input type="number" id="edit-expense-amount" placeholder="Amount" />
+        <select id="edit-expense-category">
+          <option value="food">Food</option>
+          <option value="shopping">Shopping</option>
+          <option value="travelling">Travelling</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="other">other</option>
+        </select>
+        <input type="date" id="edit-expense-date" />
+        <button class="confirm-btn" id="confirm-edit">Save changes</button>
+        <button class="cancel-btn" onclick="closeModal('edit-modal')">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <div id="delete-modal" class="modal">
+      <div class="modal-content">
+        <h2>Confirm Delete</h2>
+        <p>Are you sure you want to delete this expense?</p>
+        <button class="confirm-btn" id="confirm-delete">YES, Delete</button>
+        <button class="cancel-btn" onclick="closeModal('delete-modal')">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
